@@ -10,7 +10,7 @@
     </joint>
 
     <link name="${name}">
-      <xacro:inertial_dummy />
+      <xacro:inertial_dummy mass="0.01" x="0.01" y="0.01" z="0.01"/>
     </link>
 
     <xacro:if value="${gazebo == 'classic'}">

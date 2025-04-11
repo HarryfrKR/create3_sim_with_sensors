@@ -29,7 +29,7 @@
     </joint>
 
     <link name="${receiver_link_name}">
-      <xacro:inertial_dummy />
+      <xacro:inertial_dummy mass="0.01" x="0.01" y="0.01" z="0.01"/>
     </link>
 
     <!-- These rays are only used for aesthetic and debugging purposes only when the visualize flag is set.

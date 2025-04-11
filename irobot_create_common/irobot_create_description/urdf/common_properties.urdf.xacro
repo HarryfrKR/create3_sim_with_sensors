@@ -43,7 +43,7 @@
     </inertial>
   </xacro:macro>
 
-  <xacro:macro name="inertial_dummy">
+  <xacro:macro name="inertial_dummy" params="mass x y z">
     <xacro:inertial_cuboid mass="0.01" x="0.01" y="0.01" z="0.01"/>
   </xacro:macro>
 
@@ -130,6 +130,14 @@
   <xacro:property name="material_black">
     <material name="black">
       <color rgba="0.1 0.1 0.1 1"/>
+    </material>
+
+    <material name="white">
+      <color rgba="1 1 1 1"/>
+    </material>
+
+    <material name="blue">
+      <color rgba="0.2 0.2 1 1"/>
     </material>
   </xacro:property>
 

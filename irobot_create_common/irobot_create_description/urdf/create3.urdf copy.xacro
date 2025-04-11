@@ -7,6 +7,9 @@
   <xacro:include filename="$(find irobot_create_description)/urdf/wheel.urdf.xacro" />
   <xacro:include filename="$(find irobot_create_description)/urdf/wheel_drop.urdf.xacro" />
   <xacro:include filename="$(find irobot_create_description)/urdf/wheel_with_wheeldrop.urdf.xacro" />
+  <!--xacro:include filename="$(find irobot_create_description)/urdf/sensor_box.urdf.xacro" -->
+  <xacro:include filename="$(find irobot_create_description)/urdf/_materials.urdf.xacro" />
+  <xacro:include filename="$(find irobot_create_description)/urdf/_usb_plug.urdf.xacro" />
 
   <xacro:include filename="$(find irobot_create_description)/urdf/sensors/cliff_sensor.urdf.xacro"/>
   <xacro:include filename="$(find irobot_create_description)/urdf/sensors/imu.urdf.xacro" />
@@ -14,6 +17,9 @@
   <xacro:include filename="$(find irobot_create_description)/urdf/sensors/ir_opcode_receivers.urdf.xacro" />
   <xacro:include filename="$(find irobot_create_description)/urdf/sensors/optical_mouse.urdf.xacro"/>
 
+  <xacro:include filename="$(find irobot_create_description)/urdf/sensors/_d435.urdf.xacro" />
+  <xacro:include filename="$(find irobot_create_description)/urdf/sensors/_d435.gazebo.xacro" />
+  <xacro:include filename="$(find irobot_create_description)/urdf/sensors/_d435i_imu_modules.urdf.xacro" />
   <xacro:include filename="$(find irobot_create_description)/urdf/sensors/_d435i.urdf.xacro" />
   <xacro:include filename="$(find irobot_create_description)/urdf/sensors/lidar.urdf.xacro" />
 
@@ -65,8 +71,6 @@
   <xacro:property name="emitter_link_name" value="halo_link"/>
   <xacro:arg name="visualize_rays" default="false"/>
 
-
-
   <!-- Create 3 base definition-->
   <link name="base_link">
     <visual>
@@ -92,12 +96,6 @@
     </gazebo>
   </xacro:if>
 
-  <link name="base_footprint" />
-  <joint name="base_footprint_joint" type="fixed">
-    <parent link="base_link" />
-    <child link="base_footprint" />
-  </joint>
-
   <joint name="box_joint" type="fixed"> 
     <parent link="base_link"/>
     <child link="sensor_box"/>
@@ -108,7 +106,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.1 0.1 0.05"/>
+        <box size="0.1 0.1 0.04"/>
       </geometry>
     </visual>
     <collision>
@@ -122,11 +120,98 @@
     </xacro:inertial_cuboid_with_pose>
   </link>
 
+    <!-- Camera -->
+  <link name="camera_bottom_screw_frame">
+    <visual>
+      <geometry>
+        <mesh filename="package://irobot_create_description/meshes/d435.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://irobot_create_description/meshes/d435.dae" />
+      </geometry>
+    </collision>
+  </link>
 
-  <!-- Camera -->
-  <xacro:sensor_d435i parent="base_link" use_nominal_extrinsics="true"> 
-    <origin xyz="0.02 0 0.115" rpy="0 0 0" />
-  </xacro:sensor_d435i>
+  <link name="camera_link"></link>
+
+  <link name="camera_depth_frame"></link>
+
+  <link name="camera_depth_optical_frame"></link>
+
+  <link name="camera_color_frame"></link>
+
+  <link name="camera_color_optical_frame"></link>
+
+  <link name="camera_left_ir_frame"></link>
+
+  <link name="camera_left_ir_optical_frame"></link>
+
+  <link name="camera_right_ir_frame"></link>
+
+  <link name="camera_right_ir_optical_frame"></link>
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="camera_bottom_screw_frame" />
+    <origin xyz="-0.08 0 0.115" rpy="${pi/2} 0 ${-pi/2}" />
+    <pose xyz="0.4 0 0.25" rpy="0 0 0" />
+  </joint>
+
+  <joint name="camera_link_joint" type="fixed">
+    <parent link="camera_bottom_screw_frame" />
+    <child link="camera_link" />
+    <pose xyz="0 0.0175 0.0125 " rpy="0 0 0" />
+  </joint>
+
+  <joint name="camera_depth_joint" type="fixed">
+    <parent link="camera_link" />
+    <child link="camera_depth_frame" />
+    <pose xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="camera_depth_optical_joint" type="fixed">
+    <parent link="camera_depth_frame" />
+    <child link="camera_depth_optical_frame" />
+    <pose xyz="0 0 0 " rpy="-1.57 0 -1.57" />
+  </joint>
+
+  <joint name="camera_color_joint" type="fixed">
+    <parent link="camera_depth_frame" />
+    <child link="camera_color_frame" />
+    <pose xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="camera_color_optical_joint" type="fixed">
+    <parent link="camera_color_frame" />
+    <child link="camera_color_optical_frame" />
+    <pose xyz="0 0 0 " rpy="-1.57 0 -1.57" />
+  </joint>
+
+  <joint name="camera_left_ir_joint" type="fixed">
+    <parent link="camera_depth_frame" />
+    <child link="camera_left_ir_frame" />
+    <pose xyz="0 0 0 " rpy="0 0 0 " />
+  </joint>
+
+  <joint name="camera_left_ir_optical_joint" type="fixed">
+    <parent link="camera_left_ir_frame" />
+    <child link="camera_left_ir_optical_frame" />
+    <pose xyz="0 0 0 " rpy="-1.57 0 -1.57" />
+  </joint>
+
+  <joint name="camera_right_ir_joint" type="fixed">
+    <parent link="camera_depth_frame" />
+    <child link="camera_right_ir_frame" />
+    <pose xyz="0 -0.050 0 " rpy="0 0 0" />
+  </joint>
+
+  <joint name="camera_right_ir_optical_joint" type="fixed">
+    <parent link="camera_right_ir_frame" />
+    <child link="camera_right_ir_optical_frame" />
+    <pose xyz="0 0 0 " rpy="-1.57 0 -1.57" />
+  </joint>
 
   <!-- Bumper -->
   <xacro:bumper
@@ -347,6 +432,4 @@
       </plugin>
     </gazebo>
   </xacro:if>
-
-  
 </robot>
