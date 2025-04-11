@@ -49,6 +49,37 @@ def generate_launch_description():
         )
     )
 
+
+    # Static transform from odom to base_footprint
+    tf_odom_to_base_link = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='tf_odom_to_base_link',
+        arguments=['0', '0', '0',
+                   '0', '0', '0',
+                   'odom', 'base_link'],
+        remappings=[
+            ('/tf', 'tf'),
+            ('/tf_static', 'tf_static')
+        ],
+        output='screen'
+    )
+
+    # Static transform from base_footprint to base_link
+    tf_base_link_to_base_footprint_publisher = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='tf_base_footprint_to_base_link_publisher',
+        arguments=['0', '0', '0',
+                   '0', '0', '0',
+                   'base_link', 'base_footprint'],
+        remappings=[
+            ('/tf', 'tf'),
+            ('/tf_static', 'tf_static')
+        ],
+        output='screen'
+    )
+
     # Static transform from <namespace>/odom to odom
     # See https://github.com/ros-controls/ros2_controllers/pull/533
     tf_namespaced_odom_publisher = Node(
@@ -86,6 +117,8 @@ def generate_launch_description():
 
     ld.add_action(joint_state_broadcaster_spawner)
     ld.add_action(diffdrive_controller_callback)
+    ld.add_action(tf_odom_to_base_link)
+    ld.add_action(tf_base_link_to_base_footprint_publisher)
     ld.add_action(tf_namespaced_odom_publisher)
     ld.add_action(tf_namespaced_base_link_publisher)
 
