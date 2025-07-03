@@ -8,7 +8,7 @@ Panels:
         - /RobotModel1/Description Topic1
         - /DepthCloud1/Auto Size1
       Splitter Ratio: 0.5
-    Tree Height: 584
+    Tree Height: 699
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -309,19 +309,213 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz_default_plugins/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        base_footprint:
+          Value: false
+        base_link:
+          Value: true
+        bump_front_center:
+          Value: false
+        bump_front_left:
+          Value: false
+        bump_front_right:
+          Value: false
+        bump_left:
+          Value: false
+        bump_right:
+          Value: false
+        bumper:
+          Value: false
+        button_1:
+          Value: false
+        button_2:
+          Value: false
+        button_power:
+          Value: false
+        camera_accel_frame:
+          Value: false
+        camera_accel_optical_frame:
+          Value: false
+        camera_bottom_screw_frame:
+          Value: false
+        camera_color_frame:
+          Value: false
+        camera_color_optical_frame:
+          Value: false
+        camera_depth_frame:
+          Value: false
+        camera_depth_optical_frame:
+          Value: false
+        camera_gyro_frame:
+          Value: false
+        camera_gyro_optical_frame:
+          Value: false
+        camera_infra1_frame:
+          Value: false
+        camera_infra1_optical_frame:
+          Value: false
+        camera_infra2_frame:
+          Value: false
+        camera_infra2_optical_frame:
+          Value: false
+        camera_link:
+          Value: true
+        cliff_front_left:
+          Value: false
+        cliff_front_right:
+          Value: false
+        cliff_side_left:
+          Value: false
+        cliff_side_right:
+          Value: false
+        front_caster_link:
+          Value: false
+        green_buoy_link:
+          Value: false
+        halo_link:
+          Value: false
+        imu_link:
+          Value: false
+        ir_intensity_front_center_left:
+          Value: false
+        ir_intensity_front_center_right:
+          Value: false
+        ir_intensity_front_left:
+          Value: false
+        ir_intensity_front_right:
+          Value: false
+        ir_intensity_left:
+          Value: false
+        ir_intensity_right:
+          Value: false
+        ir_intensity_side_left:
+          Value: false
+        ir_omni:
+          Value: false
+        laser_frame:
+          Value: true
+        left_wheel:
+          Value: false
+        mouse:
+          Value: false
+        odom:
+          Value: true
+        red_buoy_link:
+          Value: false
+        right_wheel:
+          Value: false
+        sensor_box:
+          Value: false
+        std_dock_link:
+          Value: false
+        wheel_drop_left:
+          Value: false
+        wheel_drop_right:
+          Value: false
+        yellow_buoy_link:
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
-      Show Names: false
+      Show Names: true
       Tree:
-        {}
+        odom:
+          base_link:
+            base_footprint:
+              {}
+            bump_front_center:
+              {}
+            bump_front_left:
+              {}
+            bump_front_right:
+              {}
+            bump_left:
+              {}
+            bump_right:
+              {}
+            bumper:
+              {}
+            button_1:
+              {}
+            button_2:
+              {}
+            button_power:
+              {}
+            camera_bottom_screw_frame:
+              camera_link:
+                camera_accel_frame:
+                  camera_accel_optical_frame:
+                    {}
+                camera_color_frame:
+                  camera_color_optical_frame:
+                    {}
+                camera_depth_frame:
+                  camera_depth_optical_frame:
+                    {}
+                camera_gyro_frame:
+                  camera_gyro_optical_frame:
+                    {}
+                camera_infra1_frame:
+                  camera_infra1_optical_frame:
+                    {}
+                camera_infra2_frame:
+                  camera_infra2_optical_frame:
+                    {}
+            cliff_front_left:
+              {}
+            cliff_front_right:
+              {}
+            cliff_side_left:
+              {}
+            cliff_side_right:
+              {}
+            front_caster_link:
+              {}
+            imu_link:
+              {}
+            ir_intensity_front_center_left:
+              {}
+            ir_intensity_front_center_right:
+              {}
+            ir_intensity_front_left:
+              {}
+            ir_intensity_front_right:
+              {}
+            ir_intensity_left:
+              {}
+            ir_intensity_right:
+              {}
+            ir_intensity_side_left:
+              {}
+            ir_omni:
+              {}
+            laser_frame:
+              {}
+            mouse:
+              {}
+            sensor_box:
+              {}
+            wheel_drop_left:
+              left_wheel:
+                {}
+            wheel_drop_right:
+              right_wheel:
+                {}
+          std_dock_link:
+            green_buoy_link:
+              {}
+            halo_link:
+              {}
+            red_buoy_link:
+              {}
+            yellow_buoy_link:
+              {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -520,7 +714,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 8.314804077148438
+      Distance: 6.547956943511963
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -535,26 +729,26 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.374796986579895
+      Pitch: 0.8197956085205078
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.005389941856265068
+      Yaw: 6.273587226867676
     Saved: ~
 Window Geometry:
   Camera:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 1016
+  Height: 1163
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd000000040000000000000156000003a2fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b000002d1000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d0065007200610100000312000000cb0000002800ffffff000000010000010f000003a2fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003b000003a2000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d00650100000000000004500000000000000000000004c7000003a200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000015600000435fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b00000344000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d0065007200610100000385000000eb0000002800ffffff000000010000010f00000435fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003b00000435000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d006501000000000000045000000000000000000000050f0000043500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Tool Properties:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1848
-  X: 1189
-  Y: 539
+  Width: 1920
+  X: 1620
+  Y: 0

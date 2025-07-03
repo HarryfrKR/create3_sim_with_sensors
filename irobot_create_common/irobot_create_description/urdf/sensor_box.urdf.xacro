@@ -6,6 +6,22 @@
       <color rgba="0.2 0.2 1 1"/>
     </material>
 
+    <link name="sensor_box">
+        <visual>
+            <geometry>
+            <box size="0.1 0.1 0.05"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+    </link>
+
+    <joint name="box_joint" type="fixed"> 
+        <parent link="base_link"/>
+        <child link="sensor_box"/>
+        <origin xyz="0 0 0.0.110" rpy="0 0 0"/>
+    </joint>
+
+<!-- 
     <joint name="sensor_box" type="fixed">
         <parent link="base_link"/>
         <child link="laser_frame"/>
@@ -64,7 +80,7 @@
                 <frame_name>laser_frame</frame_name>
             </plugin>
         </sensor>
-    </gazebo>
+    </gazebo> -->
 
 </robot>
 
